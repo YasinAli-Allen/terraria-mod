@@ -1030,14 +1030,9 @@ Mods: {
 				Description: Losing life
 			}
 
-			SupportDamageBuff: {
-				DisplayName: Support Damage Buff
-				Description: Mods.ExampleMod.Buffs.SupportDamageBuff.Description
-			}
-
 			AddFlatTeamDamageBuff: {
 				DisplayName: Add Flat Team Damage Buff
-				Description: Mods.ExampleMod.Buffs.AddFlatTeamDamageBuff.Description
+				Description: Provides massive damage
 			}
 		}
 
