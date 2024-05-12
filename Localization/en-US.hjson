@@ -896,6 +896,11 @@ Mods: {
 				DisplayName: Example Sand Block
 				Tooltip: This is a modded sand block
 			}
+
+			AddFlatTeamDamageAccessory: {
+				DisplayName: Add Flat Team Damage Accessory
+				Tooltip: Increases flat base damage by {0}
+			}
 		}
 
 		# Projectile display names mainly show in chat when a player dies from it.
@@ -1023,6 +1028,16 @@ Mods: {
 			ExampleJavelinDebuff: {
 				DisplayName: Example Javelin Debuff
 				Description: Losing life
+			}
+
+			SupportDamageBuff: {
+				DisplayName: Support Damage Buff
+				Description: Mods.ExampleMod.Buffs.SupportDamageBuff.Description
+			}
+
+			AddFlatTeamDamageBuff: {
+				DisplayName: Add Flat Team Damage Buff
+				Description: Mods.ExampleMod.Buffs.AddFlatTeamDamageBuff.Description
 			}
 		}
 

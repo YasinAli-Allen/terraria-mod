@@ -26,8 +26,12 @@ namespace ExampleMod.Common.Players
 
 		// If this player has an accessory which gives this effect
 		public bool hasAbsorbTeamDamageEffect;
+		// If this player has an accessory which gives this effect
+		public bool addFlatTeamDamageEffect;
 		// If the player is currently in range of a player with hasAbsorbTeamDamageEffect
 		public bool defendedByAbsorbTeamDamageEffect;
+		// If the player is currently in range of a player with addFlatTeamDamageEffect
+		public bool hasAddFlatTeamDamageEffect;
 
 		public bool exampleDefenseDebuff;
 
@@ -46,12 +50,19 @@ namespace ExampleMod.Common.Players
 			hasAbsorbTeamDamageEffect = false;
 			defendedByAbsorbTeamDamageEffect = false;
 
+			addFlatTeamDamageEffect = false;
+			hasAddFlatTeamDamageEffect = false;
+
 			exampleDefenseDebuff = false;
 		}
 
 		public override void ModifyHitNPC(NPC target, ref NPC.HitModifiers modifiers) {
 			if (AdditiveCritDamageBonus > 0) {
 				modifiers.CritDamage += AdditiveCritDamageBonus;
+			}
+			if ((hasAddFlatTeamDamageEffect && withinBuffRange()) || addFlatTeamDamageEffect)
+			{
+				modifiers.FlatBonusDamage += AddFlatTeamDamageAccessory.DamageMultiplier;
 			}
 		}
 
@@ -170,6 +181,15 @@ namespace ExampleMod.Common.Players
 			return false;
 		}
 
+		private bool withinBuffRange() {
+			foreach (var otherPlayer in Main.ActivePlayers) {
+				if (otherPlayer.whoAmI != Main.myPlayer && IsWithinBuffRange(otherPlayer, Player.team)) {
+					return true;
+				}
+			}
+			return false;
+		}
+
 		private static bool IsAbleToAbsorbDamageForTeammate(Player player, int team) {
 			return player.active
 				&& !player.dead
@@ -177,6 +197,13 @@ namespace ExampleMod.Common.Players
 				&& player.GetModPlayer<ExampleDamageModificationPlayer>().hasAbsorbTeamDamageEffect
 				&& player.team == team
 				&& player.statLife > player.statLifeMax2 * AbsorbTeamDamageAccessory.DamageAbsorptionAbilityLifeThreshold;
+		}
+
+		private static bool IsWithinBuffRange(Player player, int team) {
+			return player.active
+				&& !player.dead
+				&& player.GetModPlayer<ExampleDamageModificationPlayer>().addFlatTeamDamageEffect
+				&& player.team == team;
 		}
 
 		// This code finds the closest player wearing AbsorbTeamDamageAccessory. 
