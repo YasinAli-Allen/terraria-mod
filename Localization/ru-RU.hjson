@@ -896,6 +896,11 @@ Mods: {
 				// DisplayName: Example Sand Block
 				// Tooltip: This is a modded sand block
 			}
+
+			FlickerStrike: {
+				// Tooltip: "Teleports to a monster nearby to the cursor and swings"
+				// DisplayName: Flicker Strike
+			}
 		}
 
 		# Projectile display names mainly show in chat when a player dies from it.
