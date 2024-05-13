@@ -898,7 +898,7 @@ Mods: {
 			}
 
 			FlickerStrike: {
-				Tooltip: "Teleports to a monster nearby to the cursor and swings"
+				Tooltip: Teleports to a monster nearby to the cursor and swings
 				DisplayName: Flicker Strike
 			}
 		}

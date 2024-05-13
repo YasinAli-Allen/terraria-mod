@@ -12,7 +12,7 @@ namespace ExampleMod.Content.Items.Weapons
 	{
 		public override void SetDefaults() {
 			Item.width = 40; // The item texture's width.
-			Item.height = 80; // The item texture's height.
+			Item.height = 40; // The item texture's height.
 
 			Item.useStyle = ItemUseStyleID.Swing; // The useStyle of the Item.
 			Item.useTime = 10; // The time span of using the weapon. Remember in terraria, 60 frames is a second.
@@ -41,14 +41,10 @@ namespace ExampleMod.Content.Items.Weapons
 						Vector2 temp = npc.Center - Main.MouseWorld;
 						if (temp.Length() < 100.0f)
 						{
-							if (player.direction == 1)
-							{
-								player.Teleport(new Vector2(npc.Center.X - npc.width, npc.Bottom.Y - player.height), 0, 0);
-							}
-							else
-							{
-								player.Teleport(new Vector2(npc.Center.X + npc.width, npc.Bottom.Y - player.height), 0, 0);
-							}
+							// calculate teleport position based on player direction
+							float teleportX = player.direction == 1 ? npc.Center.X - npc.width : npc.Center.X + npc.width;
+							float teleportY = npc.Bottom.Y - player.height;
+							player.Teleport(new Vector2(teleportX, teleportY), 0, 0);
 						}
 					}
 				}
