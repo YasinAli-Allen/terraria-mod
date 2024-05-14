@@ -48,7 +48,7 @@ namespace ExampleMod.Content.Items.Weapons
 
 							if (!Collision.SolidCollision(teleportDestination, player.width, player.height))
 							{
-								player.Teleport(new Vector2(teleportX, teleportY), 0, 0);
+								player.Teleport(teleportDestination, 0, 0);
 								player.direction *= -1;
 							}
 						}
