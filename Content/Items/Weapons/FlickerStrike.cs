@@ -20,7 +20,7 @@ namespace ExampleMod.Content.Items.Weapons
 			Item.autoReuse = true; // Whether the weapon can be used more than once automatically by holding the use button.
 
 			Item.DamageType = DamageClass.Melee; // Whether your item is part of the melee class.
-			Item.damage = 50; // The damage your item deals.
+			Item.damage = 69; // The damage your item deals.
 			Item.knockBack = 6; // The force of knockback of the weapon. Maximum is 20
 			Item.crit = 6; // The critical strike chance the weapon has. The player, by default, has a 4% critical strike chance.
 
@@ -42,9 +42,15 @@ namespace ExampleMod.Content.Items.Weapons
 						if (temp.Length() < 100.0f)
 						{
 							// calculate teleport position based on player direction
-							float teleportX = player.direction == 1 ? npc.Center.X - npc.width : npc.Center.X + npc.width;
-							float teleportY = npc.Bottom.Y - player.height;
-							player.Teleport(new Vector2(teleportX, teleportY), 0, 0);
+							float teleportX = player.direction == 1 ? npc.TopLeft.X - player.width * 2 : npc.TopRight.X + player.width * 2;
+							float teleportY = npc.Center.Y - player.height;
+							Vector2 teleportDestination = new Vector2(teleportX, teleportY);
+
+							if (!Collision.SolidCollision(teleportDestination, player.width, player.height))
+							{
+								player.Teleport(new Vector2(teleportX, teleportY), 0, 0);
+								player.direction *= -1;
+							}
 						}
 					}
 				}
