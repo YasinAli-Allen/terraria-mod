@@ -896,6 +896,11 @@ Mods: {
 				DisplayName: Example Sand Block
 				Tooltip: This is a modded sand block
 			}
+
+			TornadoShot: {
+				Tooltip: ""
+				DisplayName: Tornado Shot
+			}
 		}
 
 		# Projectile display names mainly show in chat when a player dies from it.
@@ -937,6 +942,8 @@ Mods: {
 			ExampleLastPrismBeam.DisplayName: Example Prism Beam
 			ExampleSandBallFallingProjectile.DisplayName: Example Sand Ball
 			ExampleSandBallGunProjectile.DisplayName: "{$ExampleSandBallFallingProjectile.DisplayName}"
+			TornadoShot.DisplayName: Tornado Shot
+			TornadoShotProjectile.DisplayName: Tornado Shot Projectile
 		}
 
 		Buffs: {
