@@ -14,7 +14,7 @@ namespace ExampleMod.Content.Items.Weapons
 		public override void SetDefaults() {
 			// Modders can use Item.DefaultToRangedWeapon to quickly set many common properties, such as: useTime, useAnimation, useStyle, autoReuse, DamageType, shoot, shootSpeed, useAmmo, and noMelee. These are all shown individually here for teaching purposes.
 			Item.DefaultToBow(12, 100, true);
-			Item.SetWeaponValues(11, 1f);
+			Item.SetWeaponValues(69, 1f);
 
 			// Common Properties
 			Item.width = 62; // Hitbox width of the item.
@@ -28,8 +28,6 @@ namespace ExampleMod.Content.Items.Weapons
 				PitchVariance = 0.2f,
 				MaxInstances = 3,
 			};
-
-			Item.shoot = ModContent.ProjectileType<TornadoShotProjectile>();
 		}
 
 		// Please see Content/ExampleRecipes.cs for a detailed explanation of recipe creation.
